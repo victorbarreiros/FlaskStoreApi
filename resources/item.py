@@ -1,5 +1,3 @@
-from email import message
-from flask import request
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from sqlalchemy.exc import SQLAlchemyError
@@ -47,7 +45,7 @@ class ItemList(MethodView):
         return ItemModel.query.all()
 
     @blp.arguments(ItemSchema)
-    @blp.response(201, ItemSchema())
+    @blp.response(201, ItemSchema)
     def post(self, item_data):
         item = ItemModel(**item_data)
 
